@@ -51,7 +51,7 @@ describe('Create Statement', () => {
     expect(statement).toHaveProperty('id');
   });
 
-  it('should be able to create a new deposit statement', async () => {
+  it('should be able to create a new withdraw statement', async () => {
     await createStatementUseCase.execute({
       user_id,
       type: OperationType.DEPOSIT,
