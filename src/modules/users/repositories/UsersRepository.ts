@@ -1,3 +1,5 @@
+import { v4 as uuid, validate } from 'uuid';
+
 import { getRepository, Repository } from "typeorm";
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 
@@ -18,6 +20,10 @@ export class UsersRepository implements IUsersRepository {
   }
 
   async findById(user_id: string): Promise<User | undefined> {
+    if (!validate(user_id)) {
+      return undefined;
+    }
+
     return this.repository.findOne(user_id);
   }
 

@@ -50,6 +50,7 @@ describe('Get Statement Operation', () => {
   it('should be able to get statement operation', async () => {
     const statement = await createStatementUseCase.execute({
       user_id,
+      sender_id: null,
       type: OperationType.DEPOSIT,
       amount: 200,
       description: 'Test statement'

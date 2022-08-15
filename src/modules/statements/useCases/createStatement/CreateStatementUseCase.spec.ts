@@ -43,6 +43,7 @@ describe('Create Statement', () => {
   it('should be able to create a new deposit statement', async () => {
     const statement = await createStatementUseCase.execute({
       user_id,
+      sender_id: null,
       type: OperationType.DEPOSIT,
       amount: 200,
       description: 'Test deposit'
@@ -54,6 +55,7 @@ describe('Create Statement', () => {
   it('should be able to create a new withdraw statement', async () => {
     await createStatementUseCase.execute({
       user_id,
+      sender_id: null,
       type: OperationType.DEPOSIT,
       amount: 200,
       description: 'Test deposit'
@@ -61,6 +63,7 @@ describe('Create Statement', () => {
 
     const statement = await createStatementUseCase.execute({
       user_id,
+      sender_id: null,
       type: OperationType.WITHDRAW,
       amount: 150,
       description: 'Test withdraw'
@@ -73,6 +76,7 @@ describe('Create Statement', () => {
     expect(async () => {
       await createStatementUseCase.execute({
         user_id,
+        sender_id: null,
         type: OperationType.DEPOSIT,
         amount: 200,
         description: 'Test deposit'
@@ -80,6 +84,7 @@ describe('Create Statement', () => {
 
       await createStatementUseCase.execute({
         user_id,
+        sender_id: null,
         type: OperationType.WITHDRAW,
         amount: 300,
         description: 'Test withdraw'
@@ -91,6 +96,7 @@ describe('Create Statement', () => {
     expect(async () => {
       await createStatementUseCase.execute({
         user_id: 'user not found',
+        sender_id: null,
         type: OperationType.DEPOSIT,
         amount: 200,
         description: 'Test deposit'
